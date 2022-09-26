@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+<body>
+    <form method="post">
+        {{form}}
+        </form>>
+    <form method="post">{% csrf_token %}
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname" ><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname" ></br>
+        <label for="Anumber">Account Number:</label><br>
+        <input type="int" id="Anumber" name="Anumber" ><br>
+         Account type:</br>
+        <input type="radio" id="savings" name="Atype" value="Saving">
+        <label for="savings">Savings</label><br>
+        <input type="radio" id="current" name="Atype" value="Current">
+        <label for="current">Current</label><br>
+        <label for="cards">Card Type:</label>
+        <select id="cards" name="cards">
+        <option value="debit">Debit</option>
+        <option value="credit">Credit</option>
+        </select></br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"></br>
+        <label for="Cnumber">Contact Number:</label><br>
+        <input type="int" id="Cnumber" name="Cnumber" ><br>
+        <label for="Pnumber">Pan Card Number:</label><br>
+        <input type="int" id="Pnumber" name="Pnumber" ><br>
+        <label for="dob">DOB:</label>
+        <input type="date" id="dob" name="dob"></br>
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+        </select></br>
+        <input type="submit" value="Submit">
+        </form>
+</body>
+</html>

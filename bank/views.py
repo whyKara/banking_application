@@ -57,6 +57,9 @@ def card(request):
         'cards': cards
     }
     return render(request, 'bank/u_cards.html', context)
+   
+def create_account(request):
+    return render(request, 'create_account.html')
 
 
 def home(request):
