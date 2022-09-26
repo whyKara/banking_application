@@ -44,6 +44,34 @@ cards = [
     },
 ]
 
+transactions = [
+    {
+        'from_acc': 'XXXXXXXXXXXXX1278',
+        'to_acc': 'XXXXXXXXXXXXX1289',
+        'amount': '50000',
+        't_status': True
+    },
+    {
+        'from_acc': 'XXXXXXXXXXXXX1278',
+        'to_acc': 'XXXXXXXXXXXXX1289',
+        'amount': '30000',
+        't_status': False
+    },
+    {
+        'from_acc': 'XXXXXXXXXXXXX1278',
+        'to_acc': 'XXXXXXXXXXXXX1289',
+        'amount': '57000',
+        't_status': True
+    },
+    {
+        'from_acc': 'XXXXXXXXXXXXX1278',
+        'to_acc': 'XXXXXXXXXXXXX1289',
+        'amount': '8900',
+        't_status': True
+    },
+
+]
+
 
 def account(request):
     context = {
@@ -57,6 +85,13 @@ def card(request):
         'cards': cards
     }
     return render(request, 'bank/u_cards.html', context)
+
+
+def transaction(request):
+    context = {
+        'transactions': transactions
+    }
+    return render(request, 'bank/u_transaction.html', context)
 
 
 def home(request):
