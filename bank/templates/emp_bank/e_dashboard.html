@@ -1,0 +1,61 @@
+{% extends 'emp_bank/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Current Active Users</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">23908</h6>
+                        <br>
+                        <h5 class="card-title">Current Bank Balance</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Rs. 8327233</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Current Active Accounts</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">899679</h6>
+                        <br>
+                        <h5 class="card-title">Current Active Cards</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">78888</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="padding-top: 40px;">
+
+        {% for transaction in transactions %}
+        <div style="padding-bottom: 20px;">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">From Accounts</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{transaction.from_acc}}</h6>
+
+                    <h5 class="card-title">To Accounts</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{transaction.to_acc}}</h6>
+
+                    <h5 class="card-title" style="text-align: right;">Amount</h5>
+                    <h6 class="card-subtitle mb-2 text-muted" style="text-align: right;">{{transaction.amount}}</h6>
+                    <div style="align-items:flex-end ;">
+
+                        {% if transaction.t_status %}
+                        <span class="badge bg-success">Success</span>
+                        {% else %}
+                        <span class="badge bg-danger">UnSucessfull</span>
+                        {% endif %}
+                        <button type="button" class="btn btn-warning">Revert</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

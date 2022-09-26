@@ -4,6 +4,6 @@ from django.urls import path
 urlpatterns = [
     path('', views.home, name='EMP-Bank-Home'),
     path('dashboard', views.dashboard, name='Employee-Dashboard'),
-    # path('card', views.card, name='Card-Details'),
-    # path('transaction', views.transaction, name='Transaction-Details'),
+    path('revert', views.revert_notofi, name='Revert Notifications'),
+    # path('transaction', views.transaction, namex='Transaction-Details'),
 ]

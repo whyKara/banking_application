@@ -69,7 +69,6 @@ transactions = [
         'amount': '8900',
         't_status': True
     },
-
 ]
 
 
