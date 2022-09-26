@@ -2,16 +2,16 @@
 
 {% block content %}
 <div class="row row-cols-1 row-cols-md-2 g-4">
-    {% for acc in accs %}
+    {% for card in cards %}
     <div class="col">
         <div style="padding-bottom: 20px;">
             <div class="card">
                 <div class="card-body">
                     <div class="card-body">
-                        <h2 class="card-title">{{acc.account_name}}</h2>
-                        <h4 class="card-subtitle mb-2 text-muted">{{acc.account_no}}</h4>
-                        <a href="{% url 'Card-Details' %}" class="card-link">Cards</a>
-                        <a href="#" class="card-link">Transactions</a>
+                        <h2 class="card-title">{{card.card_type}}</h2>
+                        <h4 class="card-subtitle mb-2 text-muted">{{card.card_no}}</h4>
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
                     </div>
                 </div>
             </div>
@@ -20,4 +20,4 @@
     {% endfor %}
 </div>
 
-{% endblock %}
+{% endblock content %}
