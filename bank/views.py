@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from bank.models import create_account
+from django.db import connections
 # Create your views here.
 
 
@@ -59,6 +60,15 @@ def card(request):
     return render(request, 'bank/u_cards.html', context)
    
 def create_account(request):
+    if request.method =='POST':
+        u_fname = request.POST['fname']
+        u_lname = request.POST['lname']    
+        u_email = request.POST['email']
+        u_lname = request.POST['fname']    
+        u_email = request.POST['fname']
+        u_contact = request.POST['cnumber']
+        u_pan_number = request.POST['pnumber']
+        u_dob = request.POST['dob']
     return render(request, 'bank/create_account.html',{})
 
 
