@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+<body>
+    <form method="post">
+        {{form}}
+        </form>
+    <form method="post">{% csrf_token %}
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname" ><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname" ></br>
+        <label for="Address1">Address Line 1:</label><br>
+        <input type="text" id="Address1" name="Address1" ><br>
+    >   <label for="Address2">Address Line 2:</label><br>
+        <input type="text" id="Address2" name="Address2" ><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"></br>
+        <label for="Cnumber">Contact Number:</label><br>
+        <input type="int" id="Cnumber" name="Cnumber" ><br>
+        <label for="Pnumber">Pan Card Number:</label><br>
+        <input type="int" id="Pnumber" name="Pnumber" ><br>
+        <label for="dob">DOB:</label>
+        <input type="date" id="dob" name="dob"></br>
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+        </select></br>
+        Sign Up:
+        <input type="submit" value="Submit">
+        </form>
+</body>
+</html>
