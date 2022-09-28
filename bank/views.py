@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import create_account
+from User.models import User
 from django.db import connections
 # Create your views here.
 
@@ -75,6 +75,8 @@ def sign_up(request):
         u_pan_number = request.POST.get['pnumber']
         u_dob = request.POST.get['dob']
         u_gender=request.POST.get['gender']
+        en=user(u_fname=u_fname,u_lname=u_lname,u_email=u_email,u_add1=u_add1,u_add2=u_add2,u_contact=u_contact,u_pan_number=u_pan_number,u_dob=u_dob,u_gender=u_gender)
+        en.save()
         return render(request, 'bank/sign_up.html',{})
 
 
