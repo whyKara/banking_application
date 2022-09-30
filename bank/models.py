@@ -18,7 +18,7 @@ class User(models.Model):
     u_contact=models.IntegerField()
     u_pan_number=models.IntegerField()
     u_dob=models.DateField()
-    u_gender= models.CharField(max_length=100 ,choices=GEEKS_CHOICES)
+    u_gender=models.CharField(max_length=100 ,choices=GEEKS_CHOICES)
 # class Accounts(models.Model):
 #     u_Acc_number=models.charfield(max_length=100)
 #     u_card_type=
