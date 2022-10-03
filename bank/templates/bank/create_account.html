@@ -17,9 +17,11 @@
         <input type="text" id="lname" name="lname1" ></br>
         <label for="Pnumber">Pan Card Number:</label></br>
         <input type="int" id="Pnumber" name="Pnumber1" ></br>
+        {%if error%}
         <div>
             <p>the user doesnt exist pllease create user</p>
         </div>
+        {%endif%}
         <label for="Anumber">Account Number:</label><br>
         <input type="int" id="Anumber" name="Anumber" ><br>
          Account type:</br>
@@ -27,11 +29,6 @@
         <label for="savings">Savings</label><br>
         <input type="radio" id="current" name="Atype" value="Current">
         <label for="current">Current</label><br>
-        <label for="cards">Card Type:</label>
-        <select id="cards" name="cards">
-        <option value="debit">Debit</option>
-        <option value="credit">Credit</option>
-        </select></br>
         <input type="submit" value="Submit">
         </form>
 </body>
