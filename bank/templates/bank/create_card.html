@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+<body>
+    <form method="post">
+        {{form}}
+        </form>
+    <form method="post">{% csrf_token %}
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname1" ><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname1" ></br>
+        <label for="Pnumber">Pan Card Number:</label></br>
+        <input type="int" id="Pnumber" name="Pnumber1" ></br>
+        {%if error%}
+        <div>
+            <p>the user doesnt exist pllease create user</p>
+        </div>
+        {%endif%}
+        <label for="cnumber">Card Number:</label><br>
+        <input type="int" id="Cnumber" name="Cnumber" ><br>
+        <label for="cards">Card Type:</label>
+        <select id="cards" name="cards">
+        <option value="debit">Debit</option>
+        <option value="credit">Credit</option>
+        </select></br>
+        <input type="submit" value="Submit">
+        <label for="Cpin">Cpin:</label><br>
+        <input type="int" id="Cpin" name="Cpin" ><br>
+        <label for="Climit">Climit:</label><br>
+        <input type="float" id="Climit" name="climit" ><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html> 

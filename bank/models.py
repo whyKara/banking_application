@@ -3,12 +3,9 @@ from django.db import models
 # Create your models here.
 
 class User(models.Model):
-    GEEKS_CHOICES ={
-    ("1", "One"),
-    ("2", "Two"),
-    ("3", "Three"),
-    ("4", "Four"),
-    ("5", "Five"),
+    GENDER ={
+    ("1", "male"),
+    ("2", "female")
     }
     u_fname=models.CharField(max_length=100)
     u_lname=models.CharField(max_length=100)
@@ -18,7 +15,17 @@ class User(models.Model):
     u_contact=models.IntegerField()
     u_pan_number=models.IntegerField()
     u_dob=models.DateField()
-    u_gender=models.CharField(max_length=100 ,choices=GEEKS_CHOICES)
-# class Accounts(models.Model):
-#     u_Acc_number=models.charfield(max_length=100)
-#     u_card_type=
+    u_gender=models.CharField(max_length=100 ,choices=GENDER)
+
+class Accounts(models.Model):
+    ATYPE={
+    ("1", "Saving"),
+    ("2", "Current")
+    }
+    u_acc_number=models.CharField(max_length=100)
+    u_acc_type=models.CharField(max_length=100 ,choices=ATYPE)
+    u_acc_balance=models.FloatField()
+    u_acc_opendate=models.DateTimeField(default =u_acc_opendate.now, blank = True)
+
+class Cards(models.Model):
+        
