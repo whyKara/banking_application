@@ -28,4 +28,14 @@ class Accounts(models.Model):
     u_acc_opendate=models.DateTimeField(default =u_acc_opendate.now, blank = True)
 
 class Cards(models.Model):
+    CTYPE={
+    ("1", "debit"),
+    ("2", "credit")
+    }
+    u_card_number=models.CharField(max_length=100)
+    u_card_type=models.CharField(max_length=100 ,choices=CTYPE)
+    u_card_limit=models.intField()
+    u_card_pin=models.CharField(max_length=100)
+
+
         

@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from bank.models import User
+from bank.models import Accounts
+from bank.models import Cards
 from django.db import connections
 # Create your views here.
 
@@ -61,16 +63,17 @@ def card(request):
    
 def create_card(request):
      if request.method =='POST':
-        fname = request.POST.get('fname1')
-        lname = request.POST.get('lname1')    
-        pan_number = request.POST.get('pnumber1')
+        fname = request.POST.get('fname2')
+        lname = request.POST.get('lname2')    
+        pan_number = request.POST.get('pnumber2')
         if request.POST.get('pnumber'):#checking of pannumber from db
             return render(request, 'bank/create_account.html',{'error':True})
         else:
             Cnum = request.POST.get('Cnumber')
             Ctype = request.POST.get('Cards')    
+            limit = request.POST.get('Climits')
             pin = request.POST.get('Cpin')
-            limit = request.POST.get('Climits')    
+            pn=Cards(u_card_number=Cnum, u_card_type=Ctype,u_card_limit=limit,u_card_pin=pin)    
 
 def create_account(request):
      if request.method =='POST':
@@ -82,6 +85,7 @@ def create_account(request):
         else:
             u_anumber = request.POST.get('Anumber')
             u_atype = request.POST.get('Atype')
+            cn=Accounts(u_acc_number=u_anumber,u_acc_type=u_atype)
             return render(request, 'bank/create_account.html')
 
 def sign_up(request):
