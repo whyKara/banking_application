@@ -7,4 +7,6 @@ urlpatterns = [
     path('card', views.card, name='Card-Details'),
     path('create_account', views.create_account, name='Create-account'),
     path('sign_up', views.sign_up, name='sign-up'),
+    path('create_card', views.create_card, name='create card'),
 ]
+
