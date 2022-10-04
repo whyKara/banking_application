@@ -7,34 +7,49 @@
 <title>Document</title>
 </head>
 <body>
-    <form method="post">
+ <form method="post">
         {{form}}
         </form>
     <form method="post">{% csrf_token %}
+    <div class="form-group"></div>
         <label for="fname">First name:</label><br>
         <input type="text" id="fname" name="fname1" ><br>
+    </div>
+    <div class="form-group"></div>
         <label for="lname">Last name:</label><br>
         <input type="text" id="lname" name="lname1" ></br>
+    </div>
+    <div class="form-group"></div>
         <label for="Pnumber">Pan Card Number:</label></br>
         <input type="int" id="Pnumber" name="Pnumber1" ></br>
+    </div>  
         {%if error%}
-        <div>
+        <div class="error">
             <p>the user doesnt exist pllease create user</p>
         </div>
         {%endif%}
+    <div class="form-group"></div>
         <label for="cnumber">Card Number:</label><br>
         <input type="int" id="Cnumber" name="Cnumber" ><br>
-        <label for="cards">Card Type:</label>
-        <select id="cards" name="cards">
-        <option value="debit">Debit</option>
-        <option value="credit">Credit</option>
-        </select></br>
-        <input type="submit" value="Submit">
+    </div> 
+    <div class="form-group">
+            <label for="Ctype">Card Type</label>
+            <select class="form-control" id="Ctype" name="Ctype">
+              <option value="debit">Debit</option>
+              <option value="Credit">Credit</option>
+            </select>
+    </div>>
+    <div class="form-group"></div>
         <label for="Cpin">Cpin:</label><br>
         <input type="int" id="Cpin" name="Cpin" ><br>
+    </div>
+    <div class="form-group"></div>
         <label for="Climit">Climit:</label><br>
         <input type="float" id="Climit" name="climit" ><br>
-        <input type="submit" value="Submit">
-    </form>
+    </div>    
+    <div class="form-group"></div>
+    <input type="submit" value="Submit">
+    </div>
+</form>
 </body>
 </html> 
