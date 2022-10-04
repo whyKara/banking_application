@@ -59,18 +59,18 @@ def card(request):
     }
     return render(request, 'bank/u_cards.html', context)
    
-def create_account(request):
+def create_card(request):
      if request.method =='POST':
-           fname = request.POST.get('fname1')
-           lname = request.POST.get('lname1')    
-           pan_number = request.POST.get('pnumber1')
-        if request.POST.get('pnumber')!=:
+        fname = request.POST.get('fname1')
+        lname = request.POST.get('lname1')    
+        pan_number = request.POST.get('pnumber1')
+        if request.POST.get('pnumber'):#checking of pannumber from db
             return render(request, 'bank/create_account.html',{'error':True})
         else:
-        Cnum = request.POST.get('Cnumber')
-        Ctype = request.POST.get('Cards')    
-        pin = request.POST.get('Cpin')
-        limit = request.POST.get('Climits')    
+            Cnum = request.POST.get('Cnumber')
+            Ctype = request.POST.get('Cards')    
+            pin = request.POST.get('Cpin')
+            limit = request.POST.get('Climits')    
 
 def create_account(request):
      if request.method =='POST':
@@ -80,9 +80,9 @@ def create_account(request):
         if request.POST.get('pnumber')!=:
             return render(request, 'bank/create_account.html',{'error':True})
         else:
-            u_anumber = request.POST>get('Anumber')
-            u_atype = request.POST>get('Atype')
-             return render(request, 'bank/create_account.html')
+            u_anumber = request.POST.get('Anumber')
+            u_atype = request.POST.get('Atype')
+            return render(request, 'bank/create_account.html')
 
 def sign_up(request):
     if request.method =='POST':
