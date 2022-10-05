@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import datetime
+
 
 # Create your models here.
 
@@ -18,6 +18,9 @@ class User(models.Model):
     u_dob=models.DateField()
     u_gender=models.CharField(max_length=100 ,choices=GENDER)
 
+    def __str__(self):
+        return self.title
+
 class Accounts(models.Model):
     ATYPE={
     ("1", "Saving"),
@@ -27,6 +30,8 @@ class Accounts(models.Model):
     u_acc_type=models.CharField(max_length=100 ,choices=ATYPE)
     u_acc_balance=models.FloatField()
     u_acc_opendate=models.DateTimeField(auto_now_add = True)
+    def __str__(self):
+        return self.title
 
 class Cards(models.Model):
     CTYPE={
@@ -37,6 +42,8 @@ class Cards(models.Model):
     u_card_type=models.CharField(max_length=100 ,choices=CTYPE)
     u_card_limit=models.IntegerField()
     u_card_pin=models.CharField(max_length=100)
+    def __str__(self):
+        return self.title
 
 
         
