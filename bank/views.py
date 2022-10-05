@@ -4,6 +4,7 @@ from bank.models import User
 from bank.models import Accounts
 from bank.models import Cards
 from django.db import connections
+from .forms import UserForm
 # Create your views here.
 
 
