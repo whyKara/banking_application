@@ -48,3 +48,6 @@ def revert_notofi(request):
         'transactions': transactions
     }
     return render(request, 'emp_bank/e_revert_notifi.html', context)
+
+
+# def register(request):

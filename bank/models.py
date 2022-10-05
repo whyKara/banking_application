@@ -45,12 +45,12 @@ class Tranaction(models.Model):
 
 
 class user_acc(models.Model):
-    u_id = models.ForeignKey(User)
-    a_id = models.ForeignKey(Account)
+    u_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    a_id = models.ForeignKey(Account, on_delete=models.CASCADE)
     status = models.BooleanField()
 
 
 class acc_cards(models.Model):
-    a_id = models.ForeignKey(Account)
-    c_id = models.ForeignKey(Cards)
+    a_id = models.ForeignKey(Account, on_delete=models.CASCADE)
+    c_id = models.ForeignKey(Cards, on_delete=models.CASCADE)
     status = models.BooleanField()

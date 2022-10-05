@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'bank.apps.BankConfig',
+    'emp_bank.apps.EmpBankConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
