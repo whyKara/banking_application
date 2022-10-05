@@ -1,5 +1,8 @@
-from django import forms
+from django.forms import ModelForm
+from .models import User
 
+class UserForm(ModelForm):
+    class meta:
+        model=User
+        fields='__all__'
 
-class UserForm(forms.Form):
-    Name=Textfield()
