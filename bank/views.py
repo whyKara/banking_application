@@ -5,6 +5,8 @@ from bank.models import Accounts
 from bank.models import Cards
 from django.db import connections
 from .forms import UserForm
+from .forms import AccountsForm
+from .forms import CardsForm
 # Create your views here.
 
 
@@ -63,45 +65,35 @@ def card(request):
     return render(request, 'bank/u_cards.html', context)
    
 def create_card(request):
+     form=CardsForm()
+     context={'Cform':form}
      if request.method =='POST':
-        fname = request.POST.get('fname2')
-        lname = request.POST.get('lname2')    
-        pan_number = request.POST.get('pnumber2')
-        if request.POST.get('pnumber'):#checking of pannumber from db
-            return render(request, 'bank/create_account.html',{'error':True})
-        else:
-            Cnum = request.POST.get('Cnumber')
-            Ctype = request.POST.get('Cards')    
-            limit = request.POST.get('Climits')
-            pin = request.POST.get('Cpin')
-            pn=Cards(u_card_number=Cnum, u_card_type=Ctype,u_card_limit=limit,u_card_pin=pin)    
+        form=UserForm(request.post)
+        if form.is_valid():
+            form.save()
+        context={'Cform':form}   
+        return render(request, 'bank/create_account.html',{'error':True})
+    
 
 def create_account(request):
+     form=AccountsForm()
+     context={'Aform':form}
      if request.method =='POST':
-        fname = request.POST.get('fname1')
-        lname = request.POST.get('lname1')    
-        pan_number = request.POST.get('pnumber1')
-        if request.POST.get('pnumber')!=:
-            return render(request, 'bank/create_account.html',{'error':True})
-        else:
-            u_anumber = request.POST.get('Anumber')
-            u_atype = request.POST.get('Atype')
-            cn=Accounts(u_acc_number=u_anumber,u_acc_type=u_atype)
-            return render(request, 'bank/create_account.html')
+        form=UserForm(request.post)
+        if form.is_valid():
+            form.save()
+        context={'Aform':form}    
+        return render(request, 'create_account.html',context)
 
 def sign_up(request):
+    form=UserForm()
+    context={'form':form}
     if request.method =='POST':
-        u_fname = request.POST.get('fname')
-        u_lname = request.POST.get('lname')    
-        u_email = request.POST.get('email')
-        u_add1=request.POST.get('address1')
-        u_add2=request.POST.get('address2')
-        u_contact = request.POST.get('cnumber')
-        u_pan_number = request.POST.get('pnumber')
-        u_dob = request.POST.get('dob')
-        u_gen=request.POST.get('gender')
-        en=User(u_fname=u_fname,u_lname=u_lname,u_email=u_email,u_add1=u_add1,u_add2=u_add2,u_contact=u_contact,u_pan_number=u_pan_number,u_dob=u_dob,u_gender=u_gen)
-        return render(request, 'bank/sign_up.html')
+        form=UserForm(request.post)
+        if form.is_valid():
+            form.save()
+        context={'form':form}    
+        return render(request, 'bank/sign_up.html',context)
 
 
 def home(request):
