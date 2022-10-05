@@ -72,7 +72,7 @@ def create_card(request):
         if form.is_valid():
             form.save()
         context={'Cform':form}   
-        return render(request, 'bank/create_account.html',{'error':True})
+        return render(request, 'bank/create_card.html',context)
     
 
 def create_account(request):
@@ -83,7 +83,7 @@ def create_account(request):
         if form.is_valid():
             form.save()
         context={'Aform':form}    
-        return render(request, 'create_account.html',context)
+        return render(request, 'bank/create_account.html',context)
 
 def sign_up(request):
     form=UserForm()
