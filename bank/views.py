@@ -1,48 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Account, Card, Transaction
 
-# Create your views here.
-
-
-accs = [
-    {
-        'account_name': 'Account1',
-        'account_no': 'XXXXXXXXXXXXX1278',
-    },
-    {
-        'account_name': 'Account 2',
-        'account_no': 'XXXXXXXXXXXXX1289',
-    },
-    {
-        'account_name': 'Account 1',
-        'account_no': 'XXXXXXXXXXXXX1278',
-    },
-    {
-        'account_name': 'Account 2',
-        'account_no': 'XXXXXXXXXXXXX1289',
-    },
-    {
-        'account_name': 'Account 1',
-        'account_no': 'XXXXXXXXXXXXX1278',
-    },
-    {
-        'account_name': 'Account 2',
-        'account_no': 'XXXXXXXXXXXXX1289',
-    },
-
-]
-
-
-cards = [
-    {
-        'card_type': 'Debit Card',
-        'card_no': '218361983382173712',
-    },
-    {
-        'card_type': 'Credit Card',
-        'card_no': '218361983382173712',
-    },
-]
 
 transactions = [
     {
@@ -74,21 +33,21 @@ transactions = [
 
 def account(request):
     context = {
-        'accs': accs
+        'accs': Account.objects.all()
     }
     return render(request, 'bank/u_account.html', context)
 
 
 def card(request):
     context = {
-        'cards': cards
+        'cards': Card.objects.all()
     }
     return render(request, 'bank/u_cards.html', context)
 
 
 def transaction(request):
     context = {
-        'transactions': transactions
+        'transactions': Transaction.objects.all()
     }
     return render(request, 'bank/u_transaction.html', context)
 
