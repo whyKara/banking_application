@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from bank.models import Transaction
 
 # Create your views here.
 
@@ -33,7 +34,7 @@ transactions = [
 
 def dashboard(request):
     context = {
-        'transactions': transactions
+        'transactions': Transaction.objects.all()
     }
     return render(request, 'emp_bank/e_dashboard.html', context)
 
@@ -45,7 +46,7 @@ def home(request):
 
 def revert_notofi(request):
     context = {
-        'transactions': transactions
+        'transactions': Transaction.objects.filter(t_revert_req = True)
     }
     return render(request, 'emp_bank/e_revert_notifi.html', context)
 
