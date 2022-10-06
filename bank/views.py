@@ -68,7 +68,7 @@ def create_card(request):
      form=CardsForm()
      context={'Cform':form}
      if request.method =='POST':
-        form=CardsForm(request.post)
+        form=CardsForm(request.POST)
         if form.is_valid():
             form.save()
 
@@ -80,7 +80,7 @@ def create_account(request):
      form=AccountsForm()
      context={'Aform':form}
      if request.method =='POST':
-        form=AccountsForm(request.post)
+        form=AccountsForm(request.POST)
         if form.is_valid():
             form.save()
 
@@ -91,12 +91,9 @@ def sign_up(request):
     form=UserForm()
     context={'form':form}
     if request.method =='POST':
-        form=UserForm(request.post)
+        form=UserForm(request.POST)
         if form.is_valid():
             form.save()
-
-    if request.POST.get('u_pan_number')==User.objects.filter('u_pan_number'):
-           return render(request, 'bank/sign_up.html',context)
     
     context={'form':form}    
     return render(request, 'bank/sign_up.html',context)
