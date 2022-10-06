@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 # class User(models.Model):
 #     u_id = models.AutoField(primary_key=True)
@@ -25,6 +26,8 @@ class Account(models.Model):
     def __str__(self) -> str:
         return self.acc_no
 
+    def get_absolute_url(self):
+        return reverse('account-detail', kwargs={'pk': self.pk})
 
 class Card(models.Model):
     c_id = models.CharField(max_length=20, primary_key =True)

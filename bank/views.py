@@ -1,34 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Account, Card, Transaction
-
-
-transactions = [
-    {
-        'from_acc': 'XXXXXXXXXXXXX1278',
-        'to_acc': 'XXXXXXXXXXXXX1289',
-        'amount': '50000',
-        't_status': True
-    },
-    {
-        'from_acc': 'XXXXXXXXXXXXX1278',
-        'to_acc': 'XXXXXXXXXXXXX1289',
-        'amount': '30000',
-        't_status': False
-    },
-    {
-        'from_acc': 'XXXXXXXXXXXXX1278',
-        'to_acc': 'XXXXXXXXXXXXX1289',
-        'amount': '57000',
-        't_status': True
-    },
-    {
-        'from_acc': 'XXXXXXXXXXXXX1278',
-        'to_acc': 'XXXXXXXXXXXXX1289',
-        'amount': '8900',
-        't_status': True
-    },
-]
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+)
 
 
 def account(request):
@@ -36,6 +15,43 @@ def account(request):
         'accs': Account.objects.all()
     }
     return render(request, 'bank/u_account.html', context)
+
+
+
+class AccountListView(ListView):
+    model = Account
+    template_name = 'bank/u_account.html'  # <app>/<model>_<viewtype>.html
+    context_object_name = 'accs'
+    ordering = ['-date_posted']
+
+
+class AccountDetailView(DetailView):
+    model = Account
+
+
+class AccountCreateView(LoginRequiredMixin, CreateView):
+    model = Account
+    fields = ['title', 'content']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
+class AccountUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Account
+    fields = ['title', 'content']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
+
 
 
 def card(request):
