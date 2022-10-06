@@ -1,35 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from bank.models import Transaction
-
-# Create your views here.
-
-transactions = [
-    {
-        'from_acc': 'XXXXXXXXXXXXX1278',
-        'to_acc': 'XXXXXXXXXXXXX1289',
-        'amount': '50000',
-        't_status': True
-    },
-    {
-        'from_acc': 'XXXXXXXXXXXXX1278',
-        'to_acc': 'XXXXXXXXXXXXX1289',
-        'amount': '30000',
-        't_status': False
-    },
-    {
-        'from_acc': 'XXXXXXXXXXXXX1278',
-        'to_acc': 'XXXXXXXXXXXXX1289',
-        'amount': '57000',
-        't_status': True
-    },
-    {
-        'from_acc': 'XXXXXXXXXXXXX1278',
-        'to_acc': 'XXXXXXXXXXXXX1289',
-        'amount': '8900',
-        't_status': True
-    },
-]
+from django.contrib.auth.forms import UserCreationForm
+from .froms import UserRegisterForm
+from django.contrib import messages
 
 
 def dashboard(request):
@@ -52,5 +26,13 @@ def revert_notofi(request):
 
 
 def register(request):
-    
-    return
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Account created for {username}!')
+            return redirect('EMP-Bank-Home')
+    else:
+        form = UserRegisterForm()
+    return render(request, 'emp_bank/u_register.html', {'form': form})

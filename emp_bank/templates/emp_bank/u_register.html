@@ -1,0 +1,20 @@
+{% extends 'emp_bank/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="content-section">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">New User</legend>
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Add User</button>
+        </div>
+    </form>
+</div>
+
+
+
+{% endblock %}
