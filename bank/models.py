@@ -36,6 +36,7 @@ class Card(models.Model):
     c_limit = models.IntegerField()
     c_doc = models.DateTimeField(auto_now_add=True)
     acc_c = models.ForeignKey(Account, on_delete=models.CASCADE)
+    
 
 
 class Transaction(models.Model):

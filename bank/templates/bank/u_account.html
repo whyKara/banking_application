@@ -8,10 +8,10 @@
     {% for acc in accs %}
     <div class="col">
         <div style="padding-bottom: 20px;">
-            <div class="card">
+            <div class="card" style="width: 24rem;">
                 <div class="card-body">
                     <div class="card-body">
-                        <h2 class="card-title"><a class="article-title" href="{% url 'account-detail' account.id %}">{{acc.cc_type}}</a></h2>
+                        <h2 class="card-title">{{acc.cc_type}}</h2>
                         <h4 class="card-subtitle mb-2 text-muted">{{acc.acc_no}}</h4>
                         <a href="{% url 'Card-Details' %}" class="card-link">Cards</a>
                         <!-- Button trigger modal

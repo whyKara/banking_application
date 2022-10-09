@@ -6,7 +6,7 @@ from .froms import UserRegisterForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def dashboard(request):
     context = {
         'transactions': Transaction.objects.all()
@@ -14,11 +14,11 @@ def dashboard(request):
     return render(request, 'emp_bank/e_dashboard.html', context)
 
 
-def home(request):
-    # return render(request, 'bank/base.html')
-    return HttpResponse('<h1>addwfawf</h1>')
+# def home(request):
+#     # return render(request, 'bank/base.html')
+#     return HttpResponse('<h1>addwfawf</h1>')
 
-
+@login_required
 def revert_notofi(request):
     context = {
         'transactions': Transaction.objects.filter(t_revert_req = True)

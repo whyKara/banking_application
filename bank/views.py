@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Account, Card, Transaction
+from django.contrib.auth import get_user
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
     ListView,
@@ -8,59 +9,32 @@ from django.views.generic import (
     CreateView,
     UpdateView,
 )
+from django.contrib.auth.decorators import login_required
 
 
+@login_required
 def account(request):
+    usr = get_user(request)
     context = {
-        'accs': Account.objects.all()
+        'accs': Account.objects.filter(owner=usr)
     }
     return render(request, 'bank/u_account.html', context)
-
-
-
-class AccountListView(ListView):
-    model = Account
-    template_name = 'bank/u_account.html'  # <app>/<model>_<viewtype>.html
-    context_object_name = 'accs'
-    ordering = ['-date_posted']
 
 
 class AccountDetailView(DetailView):
     model = Account
 
 
-class AccountCreateView(LoginRequiredMixin, CreateView):
-    model = Account
-    fields = ['title', 'content']
-
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
-
-
-class AccountUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-    model = Account
-    fields = ['title', 'content']
-
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
-
-    def test_func(self):
-        post = self.get_object()
-        if self.request.user == post.author:
-            return True
-        return False
-
-
-
+@login_required
 def card(request):
+    usr = get_user(request)
+    accs = list(Account.objects.filter(owner=usr).values())
     context = {
-        'cards': Card.objects.all()
+        'cards': Card.objects.filter(acc_c=accs)
     }
     return render(request, 'bank/u_cards.html', context)
 
-
+@login_required
 def transaction(request):
     context = {
         'transactions': Transaction.objects.all()
