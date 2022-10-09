@@ -25,12 +25,19 @@ class AccountDetailView(DetailView):
     model = Account
 
 
+class NewTransactionView(LoginRequiredMixin,CreateView):
+    model = Transaction
+    fields = ['t_facc', 't_tacc','t_ammount']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
 @login_required
 def card(request):
     usr = get_user(request)
-    accs = list(Account.objects.filter(owner=usr).values())
     context = {
-        'cards': Card.objects.filter(acc_c=accs)
+        'cards': Card.objects.filter(acc_c=usr)
     }
     return render(request, 'bank/u_cards.html', context)
 

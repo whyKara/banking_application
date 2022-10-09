@@ -1,3 +1,4 @@
+from pickle import TRUE
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
@@ -35,20 +36,20 @@ class Card(models.Model):
     c_pin = models.IntegerField()
     c_limit = models.IntegerField()
     c_doc = models.DateTimeField(auto_now_add=True)
-    acc_c = models.ForeignKey(Account, on_delete=models.CASCADE)
+    acc_c = models.ForeignKey(User, on_delete=models.CASCADE)
     
 
 
 class Transaction(models.Model):
     t_id = models.AutoField(primary_key=True)
     t_facc = models.ForeignKey(
-        Account, on_delete=models.CASCADE, related_name='from_account', null=True)
+        Account, on_delete=models.CASCADE, related_name='from_account')
     t_tacc = models.ForeignKey(
-        Account, on_delete=models.CASCADE, related_name='to_account', null=True)
+        Account, on_delete=models.CASCADE, related_name='to_account')
     t_ammount = models.FloatField()
     t_doc = models.DateTimeField(auto_now_add=True)
-    t_status = models.BooleanField()
-    t_revert_req = models.BooleanField()
+    t_status = models.BooleanField(null=True)
+    t_revert_req = models.BooleanField(null=TRUE)
 
 
 # class user_acc(models.Model):

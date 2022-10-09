@@ -1,0 +1,14 @@
+{% extends "bank/base.html" %}
+{% block content %}
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+        <a class="mr-2" href="#">{{ object.owner }}</a>
+        <small class="text-muted">{{ object.acc_opendate|date:"F d, Y" }}</small>
+      </div>
+      <h2 class="article-title">{{ object.acc_no }}</h2>
+      <h2 class="article-title">{{ object.cc_type }}</h2>
+      <p class="article-content">{{ object.acc_balance }}</p>
+    </div>
+  </article>
+{% endblock content %}
