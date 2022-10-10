@@ -6,8 +6,10 @@ from django.db import models
 class User(models.Model):
     GENDER ={
     ("1", "male"),
-    ("2", "female")
+    ("2", "female"),
+    ("3", "Other")
     }
+    u_ID=models.AutoField(primary_key=True)
     u_fname=models.CharField(max_length=100)
     u_lname=models.CharField(max_length=100)
     u_add1=models.TextField()
