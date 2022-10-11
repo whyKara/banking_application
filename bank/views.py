@@ -31,6 +31,12 @@ class NewTransactionView(LoginRequiredMixin,CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
+        facc=Transaction.objects.get(t_facc=)
+        facc.amount-=int(amount)
+        facc.save()
+        tacc=Transaction.objects.get(t_tacc=)
+        tacc.amount+=int(amount)
+        tacc.save()
         return super().form_valid(form)
 
 @login_required

@@ -49,7 +49,7 @@ class Transaction(models.Model):
     t_ammount = models.FloatField()
     t_doc = models.DateTimeField(auto_now_add=True)
     t_status = models.BooleanField(null=True)
-    t_revert_req = models.BooleanField(null=TRUE)
+    t_revert_req = models.BooleanField(null=True)
 
 
 # class user_acc(models.Model):
