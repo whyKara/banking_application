@@ -25,20 +25,21 @@ class AccountDetailView(DetailView):
     model = Account
 
 
-class NewTransactionView(LoginRequiredMixin,CreateView):
+class NewTransactionView(LoginRequiredMixin, CreateView):
     model = Transaction
-    fields = ['t_facc', 't_tacc','t_ammount']
+    fields = ['t_facc', 't_tacc', 't_ammount', 't_revert_req', 't_status']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        amount=form.instance('t_amount')
-        facc=Account.objects.get(acc_no=form.instance.t_facc)
-        facc.acc_balance-=int(amount)
+        # amount=form.instance('t_amount')
+        facc = Account.objects.get(acc_no=form.instance.t_facc)
+        facc.acc_balance -= int(form.instance.t_ammount)
         facc.save()
-        tacc=Account.objects.get(acc_no=form.instance.t_tacc)
-        tacc.acc_balance+=int(amount)
+        tacc = Account.objects.get(acc_no=form.instance.t_tacc)
+        tacc.acc_balance += int(form.instance.t_ammount)
         tacc.save()
         return super().form_valid(form)
+
 
 @login_required
 def card(request):
@@ -47,6 +48,7 @@ def card(request):
         'cards': Card.objects.filter(acc_c=usr)
     }
     return render(request, 'bank/u_cards.html', context)
+
 
 @login_required
 def transaction(request):
