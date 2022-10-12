@@ -31,11 +31,12 @@ class NewTransactionView(LoginRequiredMixin,CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        facc=Transaction.objects.get(t_facc=)
-        facc.amount-=int(amount)
+        amount=form.instance('t_amount')
+        facc=Account.objects.get(acc_no=form.instance.t_facc)
+        facc.acc_balance-=int(amount)
         facc.save()
-        tacc=Transaction.objects.get(t_tacc=)
-        tacc.amount+=int(amount)
+        tacc=Account.objects.get(acc_no=form.instance.t_tacc)
+        tacc.acc_balance+=int(amount)
         tacc.save()
         return super().form_valid(form)
 
