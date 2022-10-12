@@ -38,6 +38,8 @@ class NewTransactionView(LoginRequiredMixin, CreateView):
         tacc = Account.objects.get(acc_no=form.instance.t_tacc)
         tacc.acc_balance += int(form.instance.t_ammount)
         tacc.save()
+        def get_success_url(self):
+            return reverse('Transaction-Details')
         return super().form_valid(form)
 
 
